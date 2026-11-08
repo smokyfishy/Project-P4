@@ -94,7 +94,7 @@ public class BinaryBenchmark {
             int slowdex = BinarySearchLibrary.firstIndexSlow(list,target,comp);
             int slowcount = comp.getCount();
 			comp.reset();
-			int fdex = firstMatch(list, target, comp);
+			int fdex = BinarySearchLibrary.firstIndex(list, target, comp);
 			int fcomp = comp.getCount();
 			System.out.printf("%8d\t%d\t%d\t%d\t%d\n",
 							  size,slowdex,slowcount,fdex,fcomp);
@@ -123,6 +123,6 @@ public class BinaryBenchmark {
 	public static void main(String[] args) {
 		BinaryBenchmark bbm = new BinaryBenchmark();
 		bbm.firstResults();
-        //bbm.lastResults();
+        bbm.lastResults();
 	}
 }

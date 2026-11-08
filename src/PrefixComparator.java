@@ -42,8 +42,19 @@ public class    PrefixComparator implements Comparator<Term> {
      * @return < 0 if v < w, == 0 if v == w, and > 0 if v > w
      */
     public int compare(Term v, Term w) {
-        // TODO: change this to use myPrefixSize as specified,
-        // replacing line below with loop and code
-        return v.getWord().compareTo(w.getWord());
+        String a = v.getWord();
+        String b = w.getWord();
+        int limit = Math.min(myPrefixSize, Math.min(a.length(), b.length()));
+        for (int i = 0; i < limit; i++) {
+            char ca = a.charAt(i);
+            char cb = b.charAt(i);
+            if (ca != cb) {
+                return ca - cb;
+            }
+        }
+        // all compared chars equal: shorter word (below prefix size) is smaller
+        int la = Math.min(a.length(), myPrefixSize);
+        int lb = Math.min(b.length(), myPrefixSize);
+        return la - lb;
     }
 }
