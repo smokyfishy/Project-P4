@@ -108,7 +108,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		int first = firstIndexOf(myTerms, dummy, comp);
 		int last = lastIndexOf(myTerms, dummy, comp);
 
-		if (first == -1) {               // prefix not found
+		if (first == -1 || k == 0) {     // prefix not found or nothing requested
 			return new ArrayList<>();
 		}
 
